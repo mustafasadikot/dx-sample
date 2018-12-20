@@ -1,0 +1,19 @@
+<header>
+  <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-2">
+          <span>logo here</span>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-8">
+          <dx-nav-bar 
+                    [dataSource]="navOptions"
+                    (onItemClick)="onItemClick($event)" >
+          </dx-nav-bar>
+      </div>
+  </div>  
+</header>
+<body>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>    
+</body>
+

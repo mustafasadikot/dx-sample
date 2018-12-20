@@ -1,0 +1,133 @@
+<div class="row">  
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="card text-center bg-primary">
+          <div class="card-header">
+            Fixtures
+          </div>
+          <div class="card-body">
+            <h1>10</h1>  
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+        <div class="card text-center bg-success">
+          <div class="card-header">
+            Design
+          </div>
+          <div class="card-body">
+            <h1>10</h1>  
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+        <div class="card text-center bg-danger">
+          <div class="card-header">
+            Manufacturing
+          </div>
+          <div class="card-body">
+            <h1>10</h1>  
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+        <div class="card text-center bg-info">
+          <div class="card-header">
+            QA
+          </div>
+          <div class="card-body">
+            <h1>10</h1>  
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+        <div class="card text-center bg-warning">
+          <div class="card-header">
+            Assembly
+          </div>
+          <div class="card-body">
+            <h1>10</h1>  
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <dx-chart
+          title="Monthly fixtures"
+          palette="Harmony Light"
+          [dataSource]="dataByMonth">
+          <dxi-series valueField="fixture" name="Fixtures"></dxi-series>          
+          <dxo-common-series-settings
+              #commonSeries
+              argumentField="month"
+              type="area">
+          </dxo-common-series-settings>
+          <dxo-margin [bottom]="20"></dxo-margin>
+          <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
+          <dxo-export [enabled]="true"></dxo-export>
+          <dxo-legend
+              verticalAlignment="bottom"
+              horizontalAlignment="center">
+          </dxo-legend>
+        </dx-chart>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <dx-chart
+            id="chart"
+            title="Monthly components"
+            [dataSource]="dataByMonth"
+            palette="Violet">
+            <dxi-series
+                argumentField="month"
+                valueField="component"
+                name="Components"
+                type="bar">
+                <dxo-label
+                    [visible]="true"
+                    [format]="{
+                        type: 'fixedPoint',
+                        precision: '0'
+                    }">
+                </dxo-label>
+            </dxi-series>
+            <dxo-legend
+                verticalAlignment="bottom"
+                horizontalAlignment="center">
+            </dxo-legend>
+            <dxo-export [enabled]="true"></dxo-export>
+        </dx-chart>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <dx-pie-chart
+        id="pie"
+        type="doughnut"
+        title="Equipment details by use"
+        palette="Soft Pastel"
+        [dataSource]="equipments">
+        <dxi-series
+            argumentField="type">
+            <dxo-label
+                [visible]="true"
+                format="fixedPoint">
+                <dxo-connector [visible]="true"></dxo-connector>
+            </dxo-label>
+        </dxi-series>
+        <dxo-export [enabled]="true"></dxo-export>
+        <dxo-legend
+            [margin]="0"
+            horizontalAlignment="right"
+            verticalAlignment="top"></dxo-legend>
+        <dxo-tooltip
+            [enabled]="true"
+            [customizeTooltip]="customizeTooltip"
+            format="fixedPoint">
+        </dxo-tooltip>
+    </dx-pie-chart>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+    </div>
+</div>
+
