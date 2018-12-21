@@ -39,6 +39,32 @@ export class DashboardComponent implements OnInit {
     { month: "Sep", fixture: 11, component: 76 },
   ]
   
+  private progressData = [{
+            arg: "Design",
+            delay: 3,
+            onTime: 6,
+            notStarted: 1,
+            early: 1
+        }, {
+            arg: "Manufacture",
+            delay: 10,
+            onTime: 13,
+            notStarted: 6,
+            early: 8
+        }, {
+            arg: "QA",
+            delay: 2,
+            onTime: 14,
+            notStarted: 6,
+            early: 0
+        }, {
+            arg: "Assemble",
+            delay: 0,
+            onTime: 12,
+            notStarted: 8,
+            early: 0
+        }];
+  
   customizeTooltip = (arg: any) => {
     return {
         text: arg.valueText + " - " + this.pipe.transform(arg.percent, "1.2-2")

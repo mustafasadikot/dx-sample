@@ -1,3 +1,40 @@
-<p>
-  material-flow works!
-</p>
+<br/>
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <dx-form id="form"
+          [formData]="fixture">          
+          <dxi-item itemType="group" cssClass="second-group">
+            <dxi-item itemType="group">
+              <dxi-item dataField="Id" [label]="{ text: 'Select a Fixture', visible: true, showColon: true }" editorType="dxSelectBox" [editorOptions]="{ items: fixtures, value: 0, displayExpr: 'Name', valueExpr: 'Id', onSelectionChanged: changed }"></dxi-item>
+            </dxi-item>            
+          </dxi-item>
+      </dx-form>
+  </div>
+</div>
+<br/>
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="sourceComponents"
+    [columns]="['ComponentId', 'Design', 'Manufacturing', 'QA', 'Assembly']"
+    [headerFilter]='{
+        visible: true
+    }'
+    [showBorders]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [rowAlternationEnabled]="true">
+    <dxi-column dataField="Name" allowFiltering="true" allowSorting="true"></dxi-column>
+    <dxi-column dataField="Design" allowFiltering="true" allowSorting="true" cellTemplate="cellTemplate" [headerFilter]='{ dataSource: filterDataSource }'></dxi-column>
+    <dxi-column dataField="Manufacturing" allowFiltering="true" allowSorting="true" cellTemplate="cellTemplate" [headerFilter]='{ dataSource: filterDataSource }'></dxi-column>
+    <dxi-column dataField="QA" allowFiltering="true" allowSorting="true" cellTemplate="cellTemplate" [headerFilter]='{ dataSource: filterDataSource }'></dxi-column>
+    <dxi-column dataField="Assembly" allowFiltering="true" allowSorting="true" cellTemplate="cellTemplate" [headerFilter]='{ dataSource: filterDataSource }'></dxi-column>
+    <div *dxTemplate="let data of 'cellTemplate'" class="text-center">
+        <span [ngSwitch]="data.value" >            
+            <i title="Pending" *ngSwitchCase="0" class="material-icons text-warning" >schedule</i>
+            <i title="Done" *ngSwitchCase="1" class="material-icons text-success">done</i>
+            <i title="Rejected" *ngSwitchCase="2" class="material-icons text-danger">error</i>
+            <i title="In Progress" *ngSwitchCase="3" class="material-icons text-primary">play_arrow</i>
+            <i title="Not Required" *ngSwitchCase="4" class="material-icons text-muted">not_interested</i>
+        </span>
+    </div>
+</dx-data-grid>

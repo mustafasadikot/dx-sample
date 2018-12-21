@@ -7,7 +7,8 @@ import { MaterialFlowComponent } from './material-flow/material-flow.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'materialflow', component: MaterialFlowComponent }
+  { path: 'materialflow', component: MaterialFlowComponent },
+  { path: '', component: LoginComponent }
 ];
 
 @NgModule({
